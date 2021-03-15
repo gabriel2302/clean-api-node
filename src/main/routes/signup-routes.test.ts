@@ -10,7 +10,7 @@ describe('SignUp Routes', () => {
     await MongoHelper.disconnect()
   })
   beforeEach(async () => {
-    const accountCollection = MongoHelper.getCollection('accounts')
+    const accountCollection = await MongoHelper.getCollection('accounts')
     await accountCollection.deleteMany({})
   })
 
@@ -21,7 +21,7 @@ describe('SignUp Routes', () => {
         name: 'any_user',
         email: 'any_email@mail.com',
         password: 'any_password',
-        password_confirmation: 'any_password'
+        passwordConfirmation: 'any_password'
       })
       .expect(200)
   })
