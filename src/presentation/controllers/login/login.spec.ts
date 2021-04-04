@@ -1,6 +1,6 @@
 import { HttpRequest, Authentication } from './login-protocols'
 import { LoginController } from './login'
-import { badRequest, ok, serverError, unauthorized } from '../../helpers/htpp-helper'
+import { badRequest, ok, serverError, unauthorized } from '../../helpers/http/htpp-helper'
 import { MissingParamError } from '../../errors'
 import { Validation } from '../signup/signup-protocols'
 
