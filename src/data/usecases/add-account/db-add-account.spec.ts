@@ -55,7 +55,11 @@ const makeSut = (): SutTypes => {
   const hasherStub = makeHasher()
   const addAccountRepositoryStub = makeAddAccountRepository()
   const loadAccountByEmailRepositoryStub = makeLoadAccountByEmailRepository()
-  const sut = new DbAddAccount(hasherStub, addAccountRepositoryStub)
+  const sut = new DbAddAccount(
+    hasherStub,
+    addAccountRepositoryStub,
+    loadAccountByEmailRepositoryStub
+  )
   return {
     sut,
     hasherStub,
@@ -111,6 +115,6 @@ describe('DbAddAccount Usecase', () => {
     const { sut, loadAccountByEmailRepositoryStub } = makeSut()
     const loadSpy = jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail')
     await sut.add(makeFakeAccountData())
-    expect(loadSpy).toHaveBeenCalledWith('valid_email@mail.com')
+    expect(loadSpy).toHaveBeenCalledWith('valid_email@email.com')
   })
 })
