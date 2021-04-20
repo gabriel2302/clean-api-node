@@ -1,7 +1,8 @@
-import { SurveyModel, LoadSurveys } from './load-surveys-controller.protocols'
+import { LoadSurveys, SurveyModel } from './load-surveys-controller.protocols'
+import { noContent, ok, serverError } from '@/presentation/helpers/http/htpp-helper'
+
 import { LoadSurveysController } from './load-surveys-controller'
 import MockDate from 'mockdate'
-import { noContent, ok, serverError } from '../../../helpers/http/htpp-helper'
 
 const makeFakeSurveys = (): SurveyModel[] => {
   return [
