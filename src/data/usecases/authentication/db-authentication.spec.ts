@@ -1,5 +1,5 @@
+import { DbAuthentication } from './db-authentication'
 import {
-  DbAuthentication,
   AuthenticationModel,
   AccountModel,
   HashComparer,
