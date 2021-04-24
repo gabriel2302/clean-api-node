@@ -28,7 +28,7 @@ const makeFakeRequest = (): HttpRequest => ({
     email: 'any_email@mail.com'
   }
 })
-interface SutTypes {
+type SutTypes = {
   sut: LoginController
   validationStub: Validation
   authenticationStub: Authentication
