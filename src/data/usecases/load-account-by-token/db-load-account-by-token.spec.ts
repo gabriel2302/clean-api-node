@@ -27,7 +27,7 @@ const makeFakeAccount = (): AccountModel => ({
   email: 'valid_email@email.com',
   password: 'hashed_password'
 })
-interface SutTypes {
+type SutTypes = {
   sut: DbLoadAccountByToken
   decrypterStub: Decrypter
   loadAccountByTokenRepositoryStub: LoadAccountByTokenRepository
