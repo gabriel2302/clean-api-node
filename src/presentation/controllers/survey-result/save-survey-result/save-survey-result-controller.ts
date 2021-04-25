@@ -1,5 +1,5 @@
 import { InvalidParamError } from '@/presentation/errors'
-import { forbidden, serverError } from '@/presentation/helpers/http/htpp-helper'
+import { forbidden, ok, serverError } from '@/presentation/helpers/http/htpp-helper'
 import {
   Controller,
   HttpRequest,
@@ -16,10 +16,15 @@ export class SaveSurveyResultController implements Controller {
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
+      // Pega os parâmetros, dados do body e id do usuário
       const { surveyId } = httpRequest.params
       const { answer } = httpRequest.body
       const { accountId } = httpRequest
+
+      // Busca no banco um survey com o id do parâmetro
       const survey = await this.loadSurveyById.loadById(surveyId)
+
+      // Trata o survey para ver se ele existe
       if (survey) {
         const answers = survey.answers.map(a => a.answer)
         if (!answers.includes(answer)) {
@@ -28,15 +33,15 @@ export class SaveSurveyResultController implements Controller {
       } else {
         return forbidden(new InvalidParamError('surveyId'))
       }
-      if (accountId) {
-        await this.saveSurveyResult.save({
-          answer,
-          date: new Date(),
-          surveyId,
-          accountId
-        })
-      }
-      return { body: '', statusCode: 403 }
+
+      // Se passar, ele pega os dados e salva
+      const surveyResult = await this.saveSurveyResult.save({
+        answer,
+        date: new Date(),
+        surveyId,
+        accountId: String(accountId)
+      })
+      return ok(surveyResult)
     } catch (error) {
       return serverError(error)
     }
