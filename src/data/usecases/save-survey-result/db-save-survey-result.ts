@@ -1,8 +1,8 @@
 import {
   SaveSurveyResultRepository,
+  SurveyResultModel,
   SaveSurveyResult,
-  SaveSurveyResultModel,
-  SurveyResultModel
+  SaveSurveyResultModel
 } from './db-save-survey-result.protocols'
 
 export class DbSaveSurveyResult implements SaveSurveyResult {
