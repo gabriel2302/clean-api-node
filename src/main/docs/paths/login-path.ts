@@ -4,7 +4,7 @@ export const loginPath = {
     summary: 'API para autenticar usuários',
     requestBody: {
       content: {
-        'aplication/json': {
+        'application/json': {
           schema: {
             $ref: '#/schemas/loginParams'
           }

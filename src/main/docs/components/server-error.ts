@@ -1,7 +1,7 @@
 export const serverError = {
   description: 'Erro de servidor',
   content: {
-    'aplication/json': {
+    'application/json': {
       schema: {
         $ref: '#/schemas/error'
       }
