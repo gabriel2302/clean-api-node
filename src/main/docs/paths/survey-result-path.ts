@@ -1,6 +1,6 @@
 export const surveyResultPath = {
   put: {
-    tags: ['Enquete'],
+    tags: ['Enquetes'],
     security: [{
       apiKeyAuth: []
     }],
